@@ -19,7 +19,7 @@ const userProfileLinks = [
 
 const AnouncementSection = () => {
   return (
-    <div className=" bg-slate-950  text-white h-11 lg:flex hidden">
+    <div className=" bg-gray-950  text-white h-11 lg:flex hidden">
       <div className="flex justify-between container items-center h-full ">
         <nav className=" flex gap-3 px-2">
           {homeLinks.map((link, i) => {
