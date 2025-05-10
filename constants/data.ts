@@ -1,0 +1,20 @@
+export const desktopProductCategory = [
+  { label: "Processor", value: "processor", icon: "/processor.png" },
+  { label: "RAM", value: "ram", icon: "/ram.png" },
+  { label: "Motherboard", value: "motherboard", icon: "/motherboard.png" },
+  {
+    label: "Graphics Card",
+    value: "graphics-card",
+    icon: "/graphics-card.png",
+  },
+  { label: "Monitor", value: "monitor", icon: "/monitor.png" },
+  { label: "Storage", value: "storage", icon: "/storage.png" },
+  { label: "Keyboard", value: "keyboard", icon: "/keyboard.png" },
+  { label: "Mouse", value: "mouse", icon: "/mouse.png" },
+  { label: "Power Supply", value: "power-supply", icon: "/power-supply.png" },
+  { label: "Webcam", value: "webcam", icon: "/webcam.png" },
+  { label: "Headset", value: "headset", icon: "/headset.png" },
+  { label: "Speaker", value: "speaker", icon: "/speaker.png" },
+  { label: "Cabinet", value: "cabinet", icon: "/cabinet.png" },
+  { label: "CPU Cooler", value: "cpu-cooler", icon: "/cpu-cooler.png" },
+];

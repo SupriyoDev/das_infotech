@@ -27,6 +27,7 @@ import amd from "@/public/assets/top_brands/amd-new-150x150.png";
 import lg from "@/public/assets/top_brands/LG-150x150.png";
 import wd from "@/public/assets/top_brands/WD-150x150.png";
 import Image, { StaticImageData } from "next/image";
+import Link from "next/link";
 
 const brands = [
   {
@@ -140,17 +141,19 @@ const secondRow = brands.slice(brands.length / 2);
 
 const Brands = ({ img, name }: { img: StaticImageData; name: string }) => {
   return (
-    <figure
-      className={cn(
-        "w-20 lg:w-40 xl:w-60 cursor-pointer flex items-center justify-center overflow-hidden rounded-xl border  p-4",
-        // light styles
-        "border-gray-950/[.1] bg-transparent hover:border hover:border-blue-400 ",
-        // dark styles
-        "dark:border-gray-50/[.1] dark:bg-gray-50/[.10] dark:hover:bg-gray-50/[.15]"
-      )}
-    >
-      <Image src={img} alt={name} />
-    </figure>
+    <Link href={`/brands/${name.toLowerCase()}`}>
+      <figure
+        className={cn(
+          "w-20 lg:w-40 xl:w-60 cursor-pointer flex items-center justify-center overflow-hidden rounded-xl border  p-4",
+          // light styles
+          "border-gray-950/[.1] bg-transparent hover:border hover:border-blue-400 ",
+          // dark styles
+          "dark:border-gray-50/[.1] dark:bg-gray-50/[.10] dark:hover:bg-gray-50/[.15]"
+        )}
+      >
+        <Image src={img} alt={name} />
+      </figure>
+    </Link>
   );
 };
 

@@ -1,17 +1,13 @@
 import Link from "next/link";
-import React from "react";
 
 import { IoSearch } from "react-icons/io5";
 import { PiShoppingCartSimpleBold } from "react-icons/pi";
 
-import Image from "next/image";
-
 const navLinks = [
-  { title: "Stores", href: "/" },
   { title: "Pc components", href: "/pc-components" },
-
+  { title: "Laptops", href: "/laptops" },
+  { title: "Stores", href: "/" },
   { title: "About", href: "/about" },
-  { title: "Contact", href: "/contact" },
 ];
 
 const Header = () => {

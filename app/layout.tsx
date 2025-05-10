@@ -1,11 +1,14 @@
-import type { Metadata } from "next";
-import { Geist, Geist_Mono, Inter, Outfit } from "next/font/google";
-import "./globals.css";
+import AnouncementSection from "@/components/shared/AnouncementSection";
+import Header from "@/components/shared/Header";
+import QueryclientProvider from "@/components/shared/QueryClientProvider";
 import { cn } from "@/lib/utils";
+import type { Metadata } from "next";
+import { Onest, Outfit } from "next/font/google";
+import "./globals.css";
 
-const inter = Inter({
+const onest = Onest({
   subsets: ["latin"],
-  variable: "--font-inter",
+  variable: "--font-onest",
 });
 const outfit = Outfit({
   subsets: ["latin"],
@@ -23,15 +26,22 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body
-        className={cn(
-          "antialiased max-w-full mx-auto min-h-screen",
-          outfit.className
-        )}
-      >
-        {children}
-      </body>
-    </html>
+    <QueryclientProvider>
+      <html lang="en">
+        <body
+          className={cn(
+            "antialiased max-w-full mx-auto min-h-screen",
+            onest.className
+          )}
+        >
+          {" "}
+          <div>
+            <AnouncementSection />
+            <Header />
+          </div>
+          <main>{children}</main>
+        </body>
+      </html>
+    </QueryclientProvider>
   );
 }

@@ -1,18 +1,13 @@
-import Header from "@/components/shared/Header";
 import HeroSlider from "@/components/shared/HeroSlider";
-import React from "react";
 
-import HeroSliderBottomGrid from "@/components/shared/HeroSliderBottomGrid";
-import AnouncementSection from "@/components/shared/AnouncementSection";
-import Footer from "@/components/shared/Footer";
-import { TopBrand } from "@/components/shared/TopBrands";
 import ButtonGroup from "@/components/shared/ButtonGroup";
+import Footer from "@/components/shared/Footer";
+import HeroSliderBottomGrid from "@/components/shared/HeroSliderBottomGrid";
+import { TopBrand } from "@/components/shared/TopBrands";
 
 const Home = () => {
   return (
-    <div className="w-full h-full flex flex-col ">
-      <AnouncementSection />
-      <Header />
+    <div className="w-full flex flex-col h-screen hide-scrollbar overflow-auto ">
       <HeroSlider />
 
       <div className="mt-0">
@@ -21,7 +16,7 @@ const Home = () => {
       <div className="mb-5">
         <h2 className=" text-2xl lg:text-3xl xl:text-4xl text-center font-bold xl:font-extrabold bg-customBlue  text-white w-full py-2 lg:py-3 xl:py-4">
           {" "}
-          Top Brands
+          TOP BRANDS
         </h2>
         <TopBrand />
       </div>

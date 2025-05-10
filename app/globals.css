@@ -74,4 +74,17 @@ body {
   .button-group {
     @apply border-gray-200 hover:border-white  px-6 py-4 text-slate-800 text-base font-medium hover:text-white bg-transparent hover:bg-pink-600 transition-all duration-300 inline-flex gap-2 items-center;
   }
+
+  .container {
+    @apply max-w-7xl mx-auto;
+  }
+}
+/* Hide scrollbar but allow scrolling */
+.hide-scrollbar {
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* Internet Explorer 10+ */
+}
+
+.hide-scrollbar::-webkit-scrollbar {
+  display: none; /* Safari and Chrome */
 }

@@ -1,21 +1,21 @@
 import Link from "next/link";
-import React from "react";
+import { MdPhoneInTalk } from "react-icons/md";
 
 const homeLinks = [
   { title: "home", href: "/" },
   { title: "about us", href: "/about" },
-  { title: "contact", href: "/contact" },
-  { title: "faq", href: "/faq" },
-  { title: "t&c", href: "/terms-conditions" },
+  { title: "contact", href: "/stores" },
+  // { title: "faq", href: "/faq" },
+  { title: "privacy-policy", href: "/privacy-policy" },
 ];
 
-const userProfileLinks = [
-  { title: "9883323213", href: "/" },
-  { title: "wishlist", href: "/wishlist" },
-  { title: "compare", href: "/compare" },
-  { title: "register", href: "/register" },
-  { title: "login", href: "/login" },
-];
+// const userProfileLinks = [
+//   { title: "9883323213", href: "/" },
+//   { title: "wishlist", href: "/wishlist" },
+//   { title: "compare", href: "/compare" },
+//   { title: "register", href: "/register" },
+//   { title: "login", href: "/login" },
+// ];
 
 const AnouncementSection = () => {
   return (
@@ -35,7 +35,10 @@ const AnouncementSection = () => {
           })}
         </nav>
         <div>
-          <Link href={"/"}>wishlist</Link>
+          <Link href={"/"} className="flex gap-2 items-center">
+            <MdPhoneInTalk className="w-6 h-6" />
+            9434340767{" "}
+          </Link>
         </div>
       </div>
     </div>
