@@ -1,11 +1,12 @@
-import "dotenv/config";
+import { config } from "dotenv";
 import { defineConfig } from "drizzle-kit";
+config();
 
 export default defineConfig({
   out: "./drizzle",
   schema: "./drizzle/schema.ts",
   dialect: "postgresql",
   dbCredentials: {
-    url: "postgresql://ueb6hu:xau_VdfGd8OHfykxgLMnfFD6kJCSAp9sj5cG@us-east-1.sql.xata.sh/infotech:main?sslmode=require",
+    url: process.env.NEXT_PUBLIC_DATABASE_URL!,
   },
 });
