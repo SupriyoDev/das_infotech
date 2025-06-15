@@ -6,7 +6,7 @@ import { PiShoppingCartSimpleBold } from "react-icons/pi";
 const navLinks = [
   { title: "Pc components", href: "/pc-components" },
   { title: "Laptops", href: "/laptops" },
-  { title: "Stores", href: "/" },
+  { title: "Stores", href: "/stores" },
   { title: "About", href: "/about" },
 ];
 

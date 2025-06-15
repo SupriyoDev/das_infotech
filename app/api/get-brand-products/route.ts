@@ -16,9 +16,9 @@ export async function GET(req: NextRequest) {
     const res = await db
       .select()
       .from(desktopTable)
-      .where(eq(desktopTable.brand, brand!))
-      .limit(limit)
-      .offset(offset);
+      .where(eq(desktopTable.brand, brand!));
+    // .limit(limit)
+    // .offset(offset);
 
     console.log(res.length);
 

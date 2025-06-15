@@ -64,7 +64,7 @@ const ProductCategory = ({ params }: Props) => {
         <div className="col-span-4 flex flex-wrap px-8 gap-4 ">
           {isPending && (
             <p className="text-4xl text-blue-500 font-bold text-center">
-              Loading...
+              Fetching products...
             </p>
           )}
           {!isPending &&
@@ -94,6 +94,7 @@ const ProductCategory = ({ params }: Props) => {
                       {product.name}
                     </p>
                     <div className="max-w-[40%] mx-auto h-[2px] bg-slate-200 flex items-center  mt-2"></div>
+
                     <p className="text-center text-base text-green-600 mt-4">
                       ₹{product.price}
                     </p>

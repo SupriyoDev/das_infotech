@@ -39,6 +39,7 @@ export const desktopTable = pgTable("desktop_table", {
   storageSubType: varchar(),
   monitorType: varchar(),
   monitorSize: varchar(),
+  mrp: integer().default(5000),
 });
 
 export const laptopTable = pgTable("laptop_table", {
@@ -56,6 +57,7 @@ export const laptopTable = pgTable("laptop_table", {
   romtype: varchar().notNull(),
   processor: varchar().notNull(),
   useType: varchar().notNull(),
+  mrp: integer().default(50000),
 });
 
 export const users = pgTable(
@@ -75,4 +77,5 @@ export const users = pgTable(
   (table) => [unique("users_email_unique").on(table.email)]
 );
 
+export type laptopProductType = typeof laptopTable.$inferSelect;
 export type desktopProductType = typeof desktopTable.$inferSelect;
