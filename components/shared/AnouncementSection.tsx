@@ -35,7 +35,7 @@ const AnouncementSection = () => {
           })}
         </nav>
         <div>
-          <Link href={"/"} className="flex gap-2 items-center">
+          <Link href={"tel:+919434340767"} className="flex gap-2 items-center">
             <MdPhoneInTalk className="w-6 h-6" />
             9434340767{" "}
           </Link>

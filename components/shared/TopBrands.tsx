@@ -26,6 +26,7 @@ import dlink from "@/public/assets/top_brands/D - Link-150x150.png";
 import amd from "@/public/assets/top_brands/amd-new-150x150.png";
 import lg from "@/public/assets/top_brands/LG-150x150.png";
 import wd from "@/public/assets/top_brands/WD-150x150.png";
+import asus from "@/public/assets/top_brands/Asus-150x150.png";
 import Image, { StaticImageData } from "next/image";
 import Link from "next/link";
 
@@ -34,6 +35,11 @@ const brands = [
     name: "Acer",
     img: acer,
   },
+  {
+    name: "Asus",
+    img: asus,
+  },
+
   {
     name: "Benq",
     img: benq,

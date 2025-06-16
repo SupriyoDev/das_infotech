@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { useState } from "react";
 
 const ProductCatalogue = ({ data }: { data: string[] }) => {
@@ -13,7 +14,9 @@ const ProductCatalogue = ({ data }: { data: string[] }) => {
       <div className="h-[1px] bg-slate-200 w-full my-2"></div>
       <div className=" flex items-center gap-2 ">
         {data.map((image, i) => (
-          <img
+          <Image
+            width={900}
+            height={900}
             onClick={(e) => setImgUrl(image)}
             key={i}
             src={image}

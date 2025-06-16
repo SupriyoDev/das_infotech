@@ -78,8 +78,8 @@ const ProductCategory = ({ params }: Props) => {
                   <Image
                     src={product.images[0]}
                     alt=""
-                    width={100}
-                    height={100}
+                    width={400}
+                    height={400}
                     className="w-auto h-[250px] object-contain "
                   />
 
