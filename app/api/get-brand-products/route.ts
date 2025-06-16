@@ -9,16 +9,16 @@ export async function GET(req: NextRequest) {
 
     const brand = searchParams.get("brandname");
     const page = parseInt(searchParams.get("page") || "1");
-    const limit = parseInt(searchParams.get("limit") || "10");
+    const limit = parseInt(searchParams.get("limit") || "15");
 
     const offset = (page - 1) * limit;
 
     const res = await db
       .select()
       .from(desktopTable)
-      .where(eq(desktopTable.brand, brand!));
-    // .limit(limit)
-    // .offset(offset);
+      .where(eq(desktopTable.brand, brand!))
+      .limit(limit)
+      .offset(offset);
 
     console.log(res.length);
 

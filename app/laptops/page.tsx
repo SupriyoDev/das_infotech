@@ -1,27 +1,54 @@
 "use client";
+import { FilterSelect } from "@/components/shared/filterSelect";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { laptopProductType } from "@/drizzle/schema";
 import { UseGetLaptopProducts } from "@/lib/services";
 import { ArrowLeft, ArrowRight } from "lucide-react";
+import {
+  LAPTOP_BRANDS,
+  RAM_SIZES,
+  ROM_SIZES,
+  ROM_TYPES,
+  PROCESSOR_LISTS,
+  LAPTOP_USE_TYPE,
+} from "@/constants/data";
 
 import Image from "next/image";
 import Link from "next/link";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { IoFilter, IoSparkles } from "react-icons/io5";
 import { LuScanBarcode } from "react-icons/lu";
 
 const LaptopPage = () => {
   const [page, setPage] = useState(1);
+  const [ram, setRam] = useState<string>("");
+  const [brand, setBrand] = useState<string>("");
+  const [rom, setRom] = useState<string>("");
+  const [romType, setRomtype] = useState<string>("");
+  const [processor, setProcessor] = useState<string>("");
+  const [useType, setUseType] = useState<string>("");
+  const [minPrice, setMinPrice] = useState<string | number>("");
+  const [maxPrice, setMaxPrice] = useState<string | number>("");
 
-  const { isPending, data } = UseGetLaptopProducts(page);
+  const { isPending, data } = UseGetLaptopProducts(
+    page,
+    ram,
+    brand,
+    rom,
+    romType,
+    processor,
+    useType,
+    minPrice,
+    maxPrice
+  );
 
   return (
-    <div className="container min-h-screen pb-20">
+    <div className="container min-h-screen ">
       {/* //Header  */}
       <div className=" flex w-full flex-col items-center my-12 ">
         <p className="text-3xl font-extrabold text-slate-700 mb-2">
-          PC COMPONENTS/Laptops
+          PC COMPONENTS/LAPTOPS
         </p>
         <div className="bg-red-400 h-1 w-[100px] "></div>
       </div>
@@ -29,20 +56,81 @@ const LaptopPage = () => {
         {/* sidebar (filter)  & Product page  */}
         {/* sidebar  */}
         <div className=" col-span-1  border-r min-h-screen ">
-          <div className=" w-full h-full">
+          <div className="  mx-4 ">
             {/* heading  */}
-            <p className=" bg-blue-500 flex items-center justify-center gap-2  text-xl font-bold text-white py-2 mx-4 rounded-lg ">
+            <p className=" bg-[#008add] flex items-center justify-center gap-2  text-xl font-bold text-white py-2   rounded-lg ">
               <IoFilter /> Filter Products
             </p>
 
             {/* //filtering  */}
-
-            {/* <FilterSelect  placeholder="" /> */}
+            <div className=" flex flex-col items-start space-y-4 my-5 w-full">
+              <FilterSelect
+                placeholder="Brand"
+                setValue={setBrand}
+                options={LAPTOP_BRANDS}
+              />
+              <FilterSelect
+                placeholder="Rom"
+                setValue={setRom}
+                options={ROM_SIZES}
+              />{" "}
+              <FilterSelect
+                placeholder="Ram"
+                setValue={setRam}
+                options={RAM_SIZES}
+              />{" "}
+              <FilterSelect
+                placeholder="HDD/SSD"
+                setValue={setRomtype}
+                options={ROM_TYPES}
+              />{" "}
+              <FilterSelect
+                placeholder="Processor"
+                setValue={setProcessor}
+                options={PROCESSOR_LISTS}
+              />{" "}
+              <FilterSelect
+                placeholder="Usage"
+                setValue={setUseType}
+                options={LAPTOP_USE_TYPE}
+              />
+              <div className=" flex flex-col items-center space-y-4 ">
+                <input
+                  onChange={(e) => setMinPrice(Number(e.target.value))}
+                  value={minPrice}
+                  type="number"
+                  placeholder="Min. price"
+                  className="border border-grey-300 bg-gray-50/70 rounded-md py-1 px-[10px] placeholder:text-sm placeholder:text-slate-500 "
+                />
+                <input
+                  onChange={(e) => setMaxPrice(Number(e.target.value))}
+                  type="number"
+                  value={maxPrice}
+                  placeholder="Max. price"
+                  className="border border-grey-300 bg-gray-50/70 rounded-md placeholder:text-sm placeholder:text-slate-500 py-1 px-[10px]"
+                />
+              </div>
+              <Button
+                className="bg-[#008add] hover:bg-[#008add]"
+                onClick={() => {
+                  setRam("");
+                  setRom("");
+                  setRomtype("");
+                  setUseType("");
+                  setBrand("");
+                  setProcessor("");
+                  setMaxPrice("");
+                  setMinPrice("");
+                }}
+              >
+                reset
+              </Button>
+            </div>
           </div>
         </div>
 
         {/* main product page  */}
-        <div className="col-span-4 flex flex-wrap px-8 gap-4 ">
+        <div className="col-span-4 flex flex-wrap px-8 gap-4 mb-20 ">
           {isPending && (
             <p className="text-4xl text-blue-500 font-bold text-center">
               Fetching products...

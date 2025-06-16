@@ -1,6 +1,9 @@
 "use client";
 
+import { FilterSelect } from "@/components/shared/filterSelect";
+import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
+import { DESKTOP_PRODUCT_BRANDS } from "@/constants/data";
 import { desktopProductType } from "@/drizzle/schema";
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
@@ -16,14 +19,19 @@ interface Props {
 
 const ProductCategory = ({ params }: Props) => {
   const { category } = use(params);
-  const [filterValue, setFilterValue] = useState("");
+  const [brand, setBrand] = useState("");
+  const [minPrice, setMinPrice] = useState<string | number>("");
+  const [maxPrice, setMaxPrice] = useState<string | number>("");
 
   const { data, isError, isPending } = useQuery<desktopProductType[], Error>({
-    queryKey: ["desktop_products", category],
+    queryKey: ["desktop_products", category, brand, minPrice, maxPrice],
     queryFn: async () => {
       const res = await axios.get(`/api/get-desktop-products`, {
         params: {
           category,
+          brand,
+          minPrice,
+          maxPrice,
         },
       });
       return res.data.products;
@@ -47,21 +55,55 @@ const ProductCategory = ({ params }: Props) => {
       <div className="grid grid-cols-5 ">
         {/* sidebar (filter)  & Product page  */}
         {/* sidebar  */}
-        <div className=" col-span-1  border-r min-h-screen ">
-          <div className=" w-full h-full">
+        <div className=" col-span-1  border-r min-h-screen  ">
+          <div className="  mx-4">
             {/* heading  */}
-            <p className=" bg-blue-500 flex items-center justify-center gap-2  text-xl font-bold text-white py-2 mx-4 rounded-lg ">
+            <p className=" bg-blue-500 flex items-center justify-center gap-2  text-xl font-bold text-white py-2  rounded-lg ">
               <IoFilter /> Filter Products
             </p>
 
             {/* //filtering  */}
 
-            {/* <FilterSelect  placeholder="" /> */}
+            <div className=" flex flex-col items-start space-y-4 my-5 w-full">
+              <FilterSelect
+                placeholder="Brand"
+                setValue={setBrand}
+                options={DESKTOP_PRODUCT_BRANDS}
+              />
+
+              <div className=" flex flex-col items-center space-y-4 ">
+                <input
+                  onChange={(e) => setMinPrice(Number(e.target.value))}
+                  value={minPrice}
+                  type="number"
+                  placeholder="Min. price"
+                  className="border border-grey-300 bg-gray-50/70 rounded-md py-1 px-[10px] placeholder:text-sm placeholder:text-slate-500 "
+                />
+                <input
+                  onChange={(e) => setMaxPrice(Number(e.target.value))}
+                  type="number"
+                  value={maxPrice}
+                  placeholder="Max. price"
+                  className="border border-grey-300 bg-gray-50/70 rounded-md placeholder:text-sm placeholder:text-slate-500 py-1 px-[10px]"
+                />
+              </div>
+              <Button
+                onClick={() => {
+                  setBrand("");
+                  setMinPrice("");
+                  setMaxPrice("");
+                }}
+                className="bg-[#008add] hover:bg-[#008add]"
+              >
+                {" "}
+                reset
+              </Button>
+            </div>
           </div>
         </div>
 
         {/* main product page  */}
-        <div className="col-span-4 flex flex-wrap px-8 gap-4 ">
+        <div className="col-span-4 flex flex-wrap px-8 gap-4 mb-20 ">
           {isPending && (
             <p className="text-4xl text-blue-500 font-bold text-center">
               Fetching products...

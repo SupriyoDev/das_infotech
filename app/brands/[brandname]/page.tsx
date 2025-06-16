@@ -1,22 +1,26 @@
 "use client";
 
+import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { UseGetBrandProducts } from "@/lib/services";
+import { ArrowLeft, ArrowRight } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { useParams } from "next/navigation";
+import { useState } from "react";
 import { IoSparkles } from "react-icons/io5";
 import { LuScanBarcode } from "react-icons/lu";
 
 const BrandsPage = () => {
   const { brandname } = useParams();
+  const [page, setPage] = useState(1);
 
-  const { data, isPending } = UseGetBrandProducts(brandname as string);
+  const { data, isPending } = UseGetBrandProducts(brandname as string, page);
 
   console.log(data);
 
   return (
-    <div className=" container flex flex-col items-center mt-4  ">
+    <div className=" container min-h-screen flex flex-col items-center mt-4 mb-16 ">
       {/* title   */}
       <div className=" flex w-full flex-col items-center my-12 ">
         <p className="text-3xl font-extrabold text-slate-700 mb-2">
@@ -26,12 +30,13 @@ const BrandsPage = () => {
       </div>
 
       {/* main product page  */}
-      <div className="col-span-4 flex flex-wrap px-8 gap-4 ">
+      <div className=" flex flex-wrap px-8 gap-4 ">
         {isPending && (
           <p className="text-4xl text-primary font-bold text-center">
             Loading...
           </p>
         )}
+
         {!isPending &&
           data.map((product: any, i: any) => (
             <Link
@@ -67,6 +72,24 @@ const BrandsPage = () => {
               </Card>
             </Link>
           ))}
+
+        {/* Load more buttons */}
+        <div className=" flex items-center gap-5 justify-center w-full mt-10">
+          <Button
+            disabled={page === 1}
+            onClick={() => setPage((page) => (page === 1 ? page : page - 1))}
+            className="bg-[#008adc] hover:bg-[#008adc]/80 text-lg font-normal w-[150px] "
+          >
+            <ArrowLeft /> Previous
+          </Button>
+          <Button
+            onClick={() => setPage((page) => page + 1)}
+            className="bg-[#008adc]  hover:bg-[#008adc]/80  font-normal text-lg w-[150px]"
+          >
+            Next <ArrowRight />
+          </Button>
+        </div>
+        {/* end  */}
       </div>
     </div>
   );

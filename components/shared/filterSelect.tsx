@@ -14,7 +14,7 @@ import React from "react";
 interface Props {
   placeholder: string;
   options: {
-    title: string;
+    label: string;
     value: string;
   }[];
   setValue: React.Dispatch<React.SetStateAction<string>>;
@@ -23,15 +23,15 @@ interface Props {
 export function FilterSelect({ options, placeholder, setValue }: Props) {
   return (
     <Select onValueChange={(value) => setValue(value)}>
-      <SelectTrigger className="w-[180px]">
+      <SelectTrigger className="w-full">
         <SelectValue placeholder={placeholder} />
       </SelectTrigger>
       <SelectContent>
         <SelectGroup>
-          <SelectLabel>filter</SelectLabel>
+          <SelectLabel>select</SelectLabel>
           {options.map((option, i) => (
             <SelectItem key={i} value={option.value}>
-              {option.title}
+              {option.label}
             </SelectItem>
           ))}
         </SelectGroup>

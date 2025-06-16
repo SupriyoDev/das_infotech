@@ -49,7 +49,13 @@ const ImageSlider = () => {
 
       <div className="w-full h-full flex items-center justify-center  ">
         {currentIndex === 0 && (
-          <Image src={image1} alt="" className="  w-full h-full " />
+          <Image
+            src={image1}
+            alt=""
+            width={1400}
+            height={1200}
+            className="  w-full h-full "
+          />
         )}
         {currentIndex === 1 && (
           <Image src={image2} alt="" className="w-full h-full " />

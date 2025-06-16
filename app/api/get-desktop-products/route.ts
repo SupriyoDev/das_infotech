@@ -1,6 +1,6 @@
 import { db } from "@/drizzle/db";
 import { desktopTable } from "@/drizzle/schema";
-import { eq } from "drizzle-orm";
+import { and, between, eq } from "drizzle-orm";
 import { NextRequest, NextResponse } from "next/server";
 
 export async function GET(req: NextRequest) {
@@ -11,13 +11,19 @@ export async function GET(req: NextRequest) {
     const category = searchParams.get("category");
     const page = parseInt(searchParams.get("page") || "1");
     const limit = parseInt(searchParams.get("limit") || "10");
-
+    const brand = searchParams.get("brand");
+    const minPrice = Number(searchParams.get("minPrice") || 0);
+    const maxPrice = Number(searchParams.get("maxPrice") || 100000);
     const offset = (page - 1) * limit;
+    const filters = [];
+    if (category) filters.push(eq(desktopTable.category, category));
+    if (brand) filters.push(eq(desktopTable.brand, brand));
+    filters.push(between(desktopTable.price, minPrice, maxPrice));
 
     const res = await db
       .select()
       .from(desktopTable)
-      .where(eq(desktopTable.category, category!))
+      .where(and(...filters))
       .limit(limit)
       .offset(offset);
 

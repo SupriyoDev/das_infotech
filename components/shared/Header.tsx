@@ -1,7 +1,9 @@
+import Image from "next/image";
 import Link from "next/link";
 
 import { IoSearch } from "react-icons/io5";
 import { PiShoppingCartSimpleBold } from "react-icons/pi";
+import dit from "@/public/assets/menu-icons/dit2.png";
 
 const navLinks = [
   { title: "Pc components", href: "/pc-components" },
@@ -20,7 +22,13 @@ const Header = () => {
             href={"/"}
             className="text-2xl md:text-3xl xl:text-4xl font-extrabold text-white"
           >
-            Das Infotech
+            <Image
+              src={dit}
+              alt=""
+              width={400}
+              height={400}
+              className="h-16 w-auto"
+            />
           </Link>
         </div>
 
@@ -43,7 +51,9 @@ const Header = () => {
 
         <div className=" flex gap-6 text-white items-center">
           <IoSearch className="lg:w-8 lg:h-8 w-5 h-5" />
-          <PiShoppingCartSimpleBold className="lg:w-8 lg:h-8 w-5 h-5" />
+          <Link href={"/stores"}>
+            <PiShoppingCartSimpleBold className="lg:w-8 lg:h-8 w-5 h-5" />
+          </Link>
         </div>
       </div>
     </div>

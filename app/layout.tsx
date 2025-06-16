@@ -5,6 +5,7 @@ import { cn } from "@/lib/utils";
 import type { Metadata } from "next";
 import { Onest, Outfit } from "next/font/google";
 import "./globals.css";
+import Footer from "@/components/shared/Footer";
 
 const onest = Onest({
   subsets: ["latin"],
@@ -40,6 +41,9 @@ export default function RootLayout({
             <Header />
           </div>
           <main>{children}</main>
+          <div className=" mt-auto">
+            <Footer />
+          </div>
         </body>
       </html>
     </QueryclientProvider>

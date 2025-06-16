@@ -111,7 +111,7 @@ const ProductPage = ({ params }: Props) => {
   }
 
   return (
-    <div className=" container h-screen">
+    <div className=" container min-h-screen mb-16">
       <div className=" w-full h-full bg-gray-100/90 ">
         {/* image and title grid */}
         <div className="w-full h-[600px] grid grid-cols-2 p-2">

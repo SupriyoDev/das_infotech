@@ -21,11 +21,9 @@ const Home = () => {
         <TopBrand />
       </div>
 
-      <div className="mb-40 bg-slate-200 py-10">
+      {/* <div className="mb-40 bg-slate-200 py-10">
         <ButtonGroup />
-      </div>
-
-      <Footer />
+      </div> */}
     </div>
   );
 };
