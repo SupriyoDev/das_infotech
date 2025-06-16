@@ -44,7 +44,7 @@ const Laptop = ({ params }: Props) => {
   const images = [data?.featureImage, ...data!.images];
 
   return (
-    <div className=" container h-screen">
+    <div className=" container min-h-screen mb-16">
       <div className=" w-full h-full bg-gray-100/90 ">
         {/* image and title  */}
         <div className="w-full h-[700px] grid grid-cols-2 p-2">

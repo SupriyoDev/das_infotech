@@ -31,7 +31,7 @@ export default function RootLayout({
       <html lang="en">
         <body
           className={cn(
-            "antialiased max-w-full mx-auto min-h-screen",
+            "antialiased max-w-full mx-auto min-h-screen  ",
             onest.className
           )}
         >
