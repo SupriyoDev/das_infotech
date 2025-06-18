@@ -165,7 +165,7 @@ const ProductPage = ({ params }: Props) => {
                   ₹ {res.price}
                 </p>{" "}
                 <p className=" text-red-600 text-2xl font-medium">
-                  {discount}% Off
+                  -{discount.toFixed(0)}% Off
                 </p>
               </div>
               <div className=" w-full bg-slate-300 h-[1px]"></div>
