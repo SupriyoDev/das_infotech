@@ -4,9 +4,11 @@ import CustomTabs from "@/components/shared/CustomTabs";
 import ProductCatalogue from "@/components/shared/ProductCatalogue";
 import { Button } from "@/components/ui/button";
 import { laptopProductType } from "@/drizzle/schema";
+import { cn } from "@/lib/utils";
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import { CircleCheckBig, MessageCircle, Tag } from "lucide-react";
+import Link from "next/link";
 import React, { use } from "react";
 import { LuScanBarcode } from "react-icons/lu";
 interface Props {
@@ -31,6 +33,8 @@ const Laptop = ({ params }: Props) => {
     staleTime: 10 * 60 * 1000,
   });
 
+  const discount = ((data?.mrp! - data?.price!) * 100) / data?.mrp!;
+
   if (isError) {
     return <div>Something went wrong...</div>;
   }
@@ -48,7 +52,10 @@ const Laptop = ({ params }: Props) => {
       <div className=" w-full h-full bg-gray-100/90 ">
         {/* image and title  */}
         <div className="w-full h-[700px] grid grid-cols-2 p-2">
-          <ProductCatalogue data={images} />
+          <ProductCatalogue
+            data={images}
+            discount={String(discount.toFixed(0))}
+          />
           {/* title  */}
           <div className="p-8 ">
             <div className="flex flex-col items-center">
@@ -78,7 +85,9 @@ const Laptop = ({ params }: Props) => {
                   {" "}
                   <CircleCheckBig className="w-5 h-5" /> Availability
                 </p>
-                <p className=" ">In Stock</p>
+                <p className={cn("", data.inventory > 0 ? "" : "text-red-500")}>
+                  {data.inventory > 0 ? "In Stock" : "Out of Stock"}
+                </p>
               </div>
 
               <div className=" w-full bg-slate-300 h-[1px]"></div>
@@ -89,13 +98,18 @@ const Laptop = ({ params }: Props) => {
                 <p className=" text-green-600 text-4xl font-medium">
                   ₹ {data.price}
                 </p>
+                <p className=" text-red-600 text-2xl font-medium">
+                  -{discount.toFixed(0)}% Off
+                </p>
               </div>
               <div className=" w-full bg-slate-300 h-[1px]"></div>
             </div>
-            <Button className=" bg-red-500 hover:bg-red-500/90 text-lg mt-4">
-              {" "}
-              <MessageCircle /> Ask Question
-            </Button>
+            <Link href={"https://wa.me/919434340767"}>
+              <Button className=" bg-red-500 hover:bg-red-500/90 text-lg mt-4">
+                {" "}
+                <MessageCircle /> Ask Question
+              </Button>
+            </Link>
           </div>
         </div>
 

@@ -17,6 +17,8 @@ export const desktopProductCategory = [
   { label: "Speaker", value: "speaker", icon: "/speaker.png" },
   { label: "Cabinet", value: "cabinet", icon: "/cabinet.png" },
   { label: "CPU Cooler", value: "cpu-cooler", icon: "/cpu-cooler.png" },
+  { label: "Printer", value: "printer", icon: "/printer.png" },
+  { label: "Antivirus", value: "antivirus", icon: "/antivirus.png" },
 ];
 
 export const customerSupportData = [
@@ -238,17 +240,12 @@ export const ROM_TYPES = [
 ];
 
 export const PROCESSOR_LISTS = [
-  { label: "Intel 3rd Gen", value: "intel-3" },
-  { label: "Intel 5th Gen", value: "intel-5" },
-  { label: "Intel 7th Gen", value: "intel-7" },
-  { label: "Intel 8th Gen", value: "intel-8" },
-  { label: "Intel 9th Gen", value: "intel-9" },
-  { label: "Intel 10th Gen", value: "intel-10" },
-  { label: "Intel 11th Gen", value: "intel-11" },
-  { label: "Intel 12th Gen", value: "intel-12" },
-  { label: "Intel 13th Gen", value: "intel-13" },
-  { label: "Intel 14th Gen", value: "intel-14" },
-  { label: "Intel 15th Gen", value: "intel-15" },
+  { label: "Intel core i3", value: "intel-3" },
+  { label: "Intel core i5", value: "intel-5" },
+  { label: "Intel core i7", value: "intel-7" },
+
+  { label: "Intel core i9", value: "intel-9" },
+
   { label: "AMD Ryzen 3000 Series", value: "amd-ryzen-3000" },
   { label: "AMD Ryzen 4000 Series", value: "amd-ryzen-4000" },
   { label: "AMD Ryzen 5000 Series", value: "amd-ryzen-5000" },
